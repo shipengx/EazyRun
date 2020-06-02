@@ -11,6 +11,10 @@ import java.util.stream.Stream;
  *  stream() -- returns a sequential stream considering collection as its source.
  *  parallelStream() -- returns a parallel stream considering collection as its source.
  *
+ *  List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+ *  List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+ *
+ *
  * forEach
  * Stream has provided a new method 'forEach' to iterate through each element of the stream.
  * The following code segment shows how to print 10 random numbers using forEach.
@@ -34,7 +38,17 @@ import java.util.stream.Stream;
  * Random random = new Random();
  * random.ints().limit(10).forEach(System.out::println);
  *
+ * sorted
+ * the 'sorted' method is used to sort the stream.
+ * The following code segment shows how to print 10 random numbers in a sorted order.
+ * Random random = new Random();
+ * random.ints().limit(10).sorted().forEach(System.out::println);
  *
+ * ParallelStream is the alternative of stream for parallel processing.
+ * Take a look at the following code segment that prints a count of empty strings using parallelStream.
+ * List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+ * //get count of empty string
+ * long count = strings.parallelStream().filter(string -> string.isEmpty()).count();
  *
  */
 
@@ -66,6 +80,14 @@ public class StreamExample {
         // null pointer exception like below
         //List<Integer> nulls = null;
         //nulls.stream().collect(Collectors.toList());
+
+        List<String> myList = Arrays.asList("a1", "a2", "b1", "b2", "c2", "c1");
+
+        myList.stream()
+                .filter(s -> s.startsWith("c"))
+                .map(String::toUpperCase)
+                .sorted()
+                .forEach(System.out::println);
 
     }
 }
