@@ -89,5 +89,11 @@ public class StreamExample {
                 .sorted()
                 .forEach(System.out::println);
 
+        // Initial stream
+        Stream<Integer> stream
+                = Stream.of(5, 13, 4,
+                21, 13, 27,
+                2, 59, 59, 34);
+
     }
 }
