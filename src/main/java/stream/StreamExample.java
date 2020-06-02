@@ -50,6 +50,11 @@ import java.util.stream.Stream;
  * //get count of empty string
  * long count = strings.parallelStream().filter(string -> string.isEmpty()).count();
  *
+ * Collectors
+ * Collectors are used to combine the result of processing on the elements of a stream.
+ * Collectors can be used to return a list or a string.
+ *
+ *
  */
 
 public class StreamExample {
@@ -94,6 +99,17 @@ public class StreamExample {
                 = Stream.of(5, 13, 4,
                 21, 13, 27,
                 2, 59, 59, 34);
+
+
+        // steam of collection
+        Collection<String> collection1 = Arrays.asList("a", "b", "c");
+        Stream<String> streamOfCollection1 = collection1.stream();
+
+        List<String> elements =
+                Stream.of("a", "b", "c").filter(element -> element.contains("b"))
+                        .collect(Collectors.toList());
+        Optional<String> anyElement = elements.stream().findAny();
+        Optional<String> firstElement = elements.stream().findFirst();
 
     }
 }
