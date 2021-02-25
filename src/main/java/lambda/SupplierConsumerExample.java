@@ -71,7 +71,7 @@ import java.util.function.Supplier;
  *      boolean test(Car car);
  *  }
  *
- * 
+ *
  */
 
 public class SupplierConsumerExample {
